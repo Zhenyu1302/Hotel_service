@@ -106,8 +106,7 @@ class SimpleMonitor(simple_switch_13.SimpleSwitch13):
     def _flow_stats_reply_handler(self, ev):
         body = ev.msg.body
         datapath = ev.msg.datapath
-        self.dp = datapath
-
+     
         self.logger.info('datapath         '
                          'in-port  eth-dst           '
                          'out-port packets  bytes')
@@ -124,7 +123,7 @@ class SimpleMonitor(simple_switch_13.SimpleSwitch13):
                              stat.match['in_port'], stat.match['eth_dst'],
                              stat.instructions[0].actions[0].port,
                              stat.packet_count, stat.byte_count)
-            print(self.traffic)                 
+            #print(self.traffic)                 
             if stat.byte_count > 100 and stat.match['eth_dst'] not in self.traffic.keys() and str(hex(datapath.id))[-1] =='1' and int(stat.instructions[0].actions[0].port) != 3:
                 self.traffic_control(datapath,stat.match['eth_dst'],stat.instructions[0].actions[0].port,0)
             else:
