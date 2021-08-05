@@ -68,7 +68,7 @@ class SimpleMonitor(simple_switch_13.SimpleSwitch13):
             datap = datapath
         elif flags == 1:
             origin_output = self.traffic[drop_eth_dst]
-            self.byte_count_reset(SimpleMonitor,dp,drop_eth_dst,origin_output)            
+            self.byte_count_reset(SimpleMonitor,datap,drop_eth_dst,origin_output)            
             del self.traffic[drop_eth_dst]     
          
     @set_ev_cls(ofp_event.EventOFPStateChange,
