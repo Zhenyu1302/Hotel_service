@@ -64,8 +64,8 @@ class SimpleMonitor(simple_switch_13.SimpleSwitch13):
         if flags == 0:
             self.drop_flow(datapath,drop_eth_dst)
             self.traffic[drop_eth_dst] = out_port
-            global dp
-            dp = datapath
+            global datap
+            datap = datapath
         elif flags == 1:
             origin_output = self.traffic[drop_eth_dst]
             self.byte_count_reset(SimpleMonitor,dp,drop_eth_dst,origin_output)            
